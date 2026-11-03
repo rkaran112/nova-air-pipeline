@@ -91,7 +91,18 @@ def already_loaded(con, content_hash):
                        {"hash": content_hash}).fetchone() is not None
 
 
-def ingest_file(con, run_id, source, path, file_format, required_columns, file_date):
+def warn_unclassified(con, run_id, batch_id, source, columns, labels):
+    """Governance: every column should have a sensitivity label in config/pipeline.toml.
+    An unlabelled one is only a warning, because silver reads named columns and so never
+    passes an unknown column on, but someone should decide its label."""
+    for name in columns:
+        if name not in labels:
+            record_check(con, run_id, batch_id, source, f"column_unclassified:{name}", "warn", 0)
+            log_event("column_unclassified", source=source, column=name, batch_id=batch_id)
+
+
+def ingest_file(con, run_id, source, path, file_format, required_columns, file_date,
+                labels=None):
     """Load one file into bronze.<source>. Returns the rows loaded (0 if seen before)."""
     content_hash = file_hash(path)
     if already_loaded(con, content_hash):
@@ -104,6 +115,9 @@ def ingest_file(con, run_id, source, path, file_format, required_columns, file_d
     if missing:
         block(con, run_id, batch_id, source, "required_column_missing", len(missing),
               f"{path.name} is missing required columns {missing}")
+
+    if labels is not None:
+        warn_unclassified(con, run_id, batch_id, source, columns, labels)
 
     ingested_at = datetime.now(timezone.utc).replace(tzinfo=None)
     align_table(con, source, columns, batch_id, run_id)
@@ -151,5 +165,7 @@ def ingest_day(con, settings, run_id, day):
     rows_in = 0
     for source, path, file_format, required, file_date in files_to_ingest(
             settings.landing_dir, settings.config, day):
-        rows_in += ingest_file(con, run_id, source, path, file_format, required, file_date)
+        labels = settings.config.get("classification", {}).get(source)
+        rows_in += ingest_file(con, run_id, source, path, file_format, required, file_date,
+                               labels)
     return {"rows_in": rows_in, "rows_out": rows_in}

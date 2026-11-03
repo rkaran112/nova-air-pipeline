@@ -53,3 +53,49 @@ fare_outlier_iqr_multiplier = 3.0
 # Share of a batch sent to quarantine (not counting bookings waiting for a flight).
 quarantine_warn_rate = 0.05
 quarantine_block_rate = 0.20
+
+# Data classification: a sensitivity label for every column a daily source delivers.
+#   public   - safe to share (published schedule facts)
+#   internal - business data, not for outsiders
+#   pii      - identifies a person; tokenised or dropped in the first silver step
+# A column that arrives without a label here is logged as a warning (bronze.py).
+# The PII leak tests read the "pii" labels, so labelling a column pii also makes the
+# tests look for it in silver, gold and the exports.
+[classification.flights]
+flight_no = "public"
+flight_date = "public"
+origin = "public"
+destination = "public"
+sched_dep = "public"
+sched_arr = "public"
+actual_dep = "internal"
+actual_arr = "internal"
+aircraft_reg = "internal"
+status = "internal"
+delay_code = "internal"
+updated_at = "internal"
+
+[classification.passengers]
+passenger_id = "pii"
+full_name = "pii"
+email = "pii"
+phone = "pii"
+date_of_birth = "pii"
+loyalty_tier = "internal"
+updated_at = "internal"
+
+[classification.bookings]
+booking_id = "internal"
+pnr = "pii"
+passenger_id = "pii"
+flight_no = "public"
+flight_date = "public"
+origin = "public"
+cabin = "internal"
+fare_amount = "internal"
+currency = "internal"
+ancillary_amount = "internal"
+channel = "internal"
+status = "internal"
+booked_at = "internal"
+updated_at = "internal"

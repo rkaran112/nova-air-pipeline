@@ -7,17 +7,23 @@ import pytest
 
 from pipeline import run as run_module
 from pipeline.pii import make_tokenizer
-from pipeline.settings import MissingPiiKeyError, read_pii_key
+from pipeline.settings import MissingPiiKeyError, load_config, read_pii_key
 from tests.conftest import FIXTURE_LANDING
 
-PII_COLUMNS = {"passengers": ("passenger_id", "full_name", "email", "phone", "date_of_birth"),
-               "bookings": ("passenger_id", "pnr")}
+
+def pii_columns():
+    """The columns labelled "pii" in config/pipeline.toml, for each source that has any.
+    Reading the labels means a newly labelled column is searched for automatically."""
+    labels = load_config()["classification"]
+    found = {source: [c for c, label in columns.items() if label == "pii"]
+             for source, columns in labels.items()}
+    return {source: columns for source, columns in found.items() if columns}
 
 
 def raw_pii_values():
     """Every personal value in the fixture landing files."""
     values = set()
-    for source, columns in PII_COLUMNS.items():
+    for source, columns in pii_columns().items():
         for path in (FIXTURE_LANDING / source).glob("*.csv"):
             with path.open(newline="") as file:
                 for row in csv.DictReader(file):
