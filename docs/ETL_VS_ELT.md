@@ -51,7 +51,7 @@ def clean_bookings(path):
 Note: in ETL the raw rows never reach the warehouse. If the cleaning had a bug, the
 original values are gone unless you kept the files.
 
-## How to choose, in an interview
+## How to choose
 
 | Question | Points to ELT | Points to ETL |
 |---|---|---|
@@ -64,10 +64,9 @@ original values are gone unless you kept the files.
 
 **The honest answer is usually "ELT, with a little ETL at the edges."** This project does
 exactly that: PII tokenisation runs as a Python function, but it is *called from SQL*
-inside the warehouse, and the raw values are still in bronze. If the panel says "raw PII
+inside the warehouse, and the raw values are still in bronze. If the requirement is "raw PII
 must never enter the warehouse", the change is to tokenise in Python during the bronze
-load, which turns that one step into ETL. (That is change drill H3 in
-`CHANGE_DRILLS.md`.)
+load, which turns that one step into ETL.
 
 ## A one-line answer to "ETL or ELT?"
 

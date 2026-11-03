@@ -103,7 +103,7 @@ changes, for example a passenger moving from SILVER to GOLD tier.
   `is_current` columns. You can ask "what tier were they *when they flew*?"
 
 **Here:** `dim_passenger` is Type 1 (P002 is GOLD; the earlier SILVER is gone). Turning
-it into Type 2 is a change drill in `CHANGE_DRILLS.md`.
+it into Type 2 would keep every version of a passenger.
 
 ## Partitioning
 

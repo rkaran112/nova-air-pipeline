@@ -266,9 +266,7 @@ checks every query on the fixture exports.
 All checks passed!
 ```
 
-Benchmark results: `docs/BENCHMARKS.md`. Every break-it drill answer in
-`PRACTICE_DRILLS.md` was checked by applying the change to a scratch copy and running the
-suite. A clean copy (no data, new venv, new key) was rebuilt by following the README:
+Benchmark results: `docs/BENCHMARKS.md`. A clean copy (no data, new venv, new key) was rebuilt by following the README:
 71 passed, lint clean, and every silver and gold table identical to this warehouse except
 the five that hold PII tokens, which differ because the key differs.
 
@@ -294,4 +292,4 @@ the five that hold PII tokens, which differ because the key differs.
 **Questions:**
 1. Which numbers in the docs are generated, and how would you refresh them after a change?
 2. In your own words, when would you move this project to Airflow? To Spark?
-3. What would you say in the first two minutes of the hackathon, before writing code?
+3. What would you do in the first two minutes with an unseen dataset, before writing code?

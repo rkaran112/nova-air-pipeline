@@ -1,4 +1,4 @@
-# SQL patterns used here (and in most hackathons)
+# SQL patterns used here (and in most analytics work)
 
 Each pattern has a tiny worked example you can paste into DuckDB, then a pointer to
 where the project uses it. To try them, start Python in the repo folder and run:

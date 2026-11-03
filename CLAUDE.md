@@ -5,9 +5,8 @@ Guidance for Claude Code sessions working in this repo.
 ## What this is
 
 Nova Air is a fictional Indian low-cost airline. This repo is a batch ELT pipeline
-built as a **study blueprint** for Karan's data engineering interview at Akasa on
-6 Nov 2026. On the day he gets an unseen hackathon problem, so this project has to
-be easy to understand, rebuild and adapt under time pressure.
+built as a portfolio project for data engineering roles. It has to stay easy to
+understand, rebuild and adapt to a new dataset.
 
 Priorities, in order: (1) Karan can explain every file, function, query and decision
 unaided; (2) the structure transfers to a new dataset; (3) it reads well on a resume.
@@ -146,10 +145,10 @@ needs a regression test or a review check:
 
 Use simple English. Before naming a term, say what it does in plain language with an
 example from this project. Every command and number in a doc must have come from a
-real run. The hidden business patterns appear only in `docs/GENERATOR_ANSWER_KEY.md`
-and `scripts/datagen/patterns.py`; never hint at them in analysis code, SQL comments or
-other docs. `docs/CHANGE_DRILLS.md` describes changes for Karan to attempt; do not
-implement them on `main`.
+real run. The hidden business patterns appear only in `scripts/datagen/patterns.py` and in
+Karan's local study notes, which are not in the repo; never hint at them in analysis
+code, SQL comments or other docs. Local drill files describe changes for Karan to
+attempt; do not implement them on `main`.
 
 ## Machine notes
 

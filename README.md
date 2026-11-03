@@ -148,8 +148,7 @@ From the latest run (small profile, seed 42), filled in by
 - Rows held in quarantine: **18,587**, of which **12,184** were late bookings later released automatically.
 <!-- /numbers -->
 
-What the dashboard reveals (spoilers in
-[`docs/GENERATOR_ANSWER_KEY.md`](docs/GENERATOR_ANSWER_KEY.md)): a busy route that is
+What the dashboard reveals (the generator plants these patterns on purpose): a busy route that is
 full but earns the least per seat, a route that never fills, monsoon and fog delay
 seasons, delays building up through each aircraft's day, and a festival revenue spike.
 
@@ -172,18 +171,16 @@ sql/                   meta/, silver/, gold/ - one readable file per step or tab
 dashboard/             Streamlit app; queries.py holds every query it runs
 scripts/               data generator, profiler, benchmark, doc numbers, mock hackathon
 tests/                 pytest suite on small hand-written fixtures
-docs/                  start with docs/00_START_HERE.md
+docs/                  start with docs/ARCHITECTURE.md
 ```
 
-## Learning docs
+## Docs
 
-Start with [`docs/00_START_HERE.md`](docs/00_START_HERE.md). Also:
 [architecture](docs/ARCHITECTURE.md), [execution flow](docs/EXECUTION_FLOW.md),
 [concepts](docs/CONCEPTS.md), [ETL vs ELT](docs/ETL_VS_ELT.md),
 [data dictionary](docs/DATA_DICTIONARY.md), [SQL patterns](docs/SQL_PATTERNS.md),
-[interview Q&A](docs/INTERVIEW_QA.md), [hackathon playbook](docs/HACKATHON_PLAYBOOK.md),
-[practice drills](docs/PRACTICE_DRILLS.md), [change drills](docs/CHANGE_DRILLS.md),
-[governance](docs/GOVERNANCE.md), [MySQL and MongoDB sources](docs/SOURCES.md), [scaling](docs/SCALING.md), [Power BI guide](docs/POWER_BI_GUIDE.md),
+[governance](docs/GOVERNANCE.md), [MySQL and MongoDB sources](docs/SOURCES.md),
+[scaling](docs/SCALING.md), [Power BI guide](docs/POWER_BI_GUIDE.md),
 [benchmarks](docs/BENCHMARKS.md), [decisions](DECISIONS.md).
 
 ## Limitations

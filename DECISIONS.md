@@ -7,7 +7,7 @@ Each entry has:
 - **Options**: what else was possible.
 - **Choice**: what was done.
 - **Why**: the reasoning.
-- **If asked**: a one-line answer for the panel.
+- **If asked**: a one-line answer for a reviewer.
 
 Entries are numbered in the order they were made. The phase is in brackets.
 
@@ -35,7 +35,7 @@ Entries are numbered in the order they were made. The phase is in brackets.
 ## D-003 Pin each package to its newest release that is at least two weeks old (Phase 0)
 
 - **Context:** On 2 Nov 2026, DuckDB 2.0.0 (a new major version) was 12 days old, and
-  pandas 3.1.0 was 10 days old. The interview is on 6 Nov.
+  pandas 3.1.0 was 10 days old.
 - **Options:** the latest of everything; the latest minus a safety margin.
 - **Choice:** duckdb 1.5.6, faker 40.43.0, pandas 3.0.6, plotly 7.1.0, python-dotenv
   1.2.4, streamlit 1.66.0; for development, pytest 9.1.1, ruff 0.17.1, psutil 7.2.2.
@@ -403,12 +403,12 @@ Each of these is a real tool that this project deliberately does not use.
 | Tool | What it does | Why not here |
 |---|---|---|
 | Airflow | A scheduler that runs pipelines on a timetable, retries failed steps and shows run history | One machine and one daily job. An ordered list of steps plus `meta.pipeline_runs` covers it |
-| dbt | Manages SQL transformation files: their order, tests and documentation | About 20 SQL files run in a fixed order. Plain SQL is also what the interview tests |
+| dbt | Manages SQL transformation files: their order, tests and documentation | About 20 SQL files run in a fixed order. Plain SQL is also easier to read and review |
 | Spark | Spreads a computation across many machines | The data fits on one laptop, and DuckDB handles millions of rows |
 | Kafka | Moves a continuous stream of events between systems | The sources arrive as daily files, so this is a batch problem |
 | Docker | Packages an app together with its whole environment | Docker does not run on this machine, and a venv with pinned versions is enough |
 | Kubernetes | Runs many containers across a cluster | Nothing to orchestrate at this size |
 | Cloud services (S3, ADLS, Snowflake, BigQuery…) | Hosted storage and warehouses | Runs locally for free with no account. `docs/SCALING.md` maps each local part to its cloud equivalent |
-| An ORM such as SQLAlchemy | Maps tables to Python classes | It would hide the SQL that the interview tests |
+| An ORM such as SQLAlchemy | Maps tables to Python classes | It would hide the SQL, which is the part worth reading |
 | A custom framework | A home-made rules engine or step runner | It would be the hardest thing in the repo to explain. A plain list of steps does the job |
 | A lock tool (pip-tools, uv) | Pins every transitive package, per OS | The next step if exact reproducibility of every package is needed (see D-004) |

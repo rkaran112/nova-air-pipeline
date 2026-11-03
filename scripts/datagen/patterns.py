@@ -1,7 +1,7 @@
-"""SPOILER: the hidden business patterns. Don't read this before doing the practice drills.
+"""SPOILER: the hidden business patterns the dashboard is meant to reveal.
 
 Everything here shapes what really happened (delays, cancellations, demand, fares).
-The answer key is docs/GENERATOR_ANSWER_KEY.md.
+The answer key is kept in local study notes, not in this repo.
 """
 
 from datetime import date
