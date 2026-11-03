@@ -1,0 +1,15 @@
+# Python environment and caches
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets: the real PII key lives only in .env on your own machine
+.env
+
+# Everything the project generates: landing files, the DuckDB warehouse,
+# exports and benchmark runs. Rebuild them with the documented commands.
+data/
+*.duckdb
+*.duckdb.wal
+.gstack/

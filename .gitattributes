@@ -1,0 +1,9 @@
+# Let Git choose line endings for ordinary text files on each OS.
+* text=auto
+
+# Test fixtures must stay byte-for-byte identical on Windows, macOS and Linux,
+# because the pipeline fingerprints files by their exact bytes.
+tests/fixtures/** -text
+
+*.png binary
+*.parquet binary

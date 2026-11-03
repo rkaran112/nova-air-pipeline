@@ -1,0 +1,18 @@
+# Settings for the test runner (pytest) and the linter (ruff).
+# The project runs from this folder; it is not installed as a package.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+# Any warning fails the test run. If a library warning ever has to be allowed,
+# add one specific filter here with the reason beside it, never a blanket ignore.
+filterwarnings = ["error"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+# E and W: style problems. F: real bugs, such as unused imports and undefined
+# names. I: imports sorted in a consistent order.
+select = ["E", "F", "W", "I"]

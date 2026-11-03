@@ -1,0 +1,8 @@
+# Runtime dependencies, pinned to exact versions so every run uses the same code.
+# Rule: newest release that was at least two weeks old on 2026-11-02 (see DECISIONS.md, D-003).
+duckdb==1.5.6
+faker==40.43.0
+pandas==3.0.6
+plotly==7.1.0
+python-dotenv==1.2.4
+streamlit==1.66.0
