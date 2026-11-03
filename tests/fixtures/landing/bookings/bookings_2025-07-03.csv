@@ -1,0 +1,2 @@
+booking_id,pnr,passenger_id,flight_no,flight_date,origin,cabin,fare_amount,currency,ancillary_amount,channel,status,booked_at,updated_at,promo_code
+B022,PNRAC4,P010,NV1001,2025-07-03,BLR,ECONOMY,3000.00,INR,0.00,WEB,CONFIRMED,2025-06-21 10:00:00+05:30,2025-06-21 10:00:00+05:30,

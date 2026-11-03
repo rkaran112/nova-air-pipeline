@@ -1,0 +1,15 @@
+passenger_id,full_name,email,phone,date_of_birth,loyalty_tier,updated_at
+P001,Asha Fixture,asha.fixture@example.com,+91 9000000001,1990-05-12,BLUE,2025-06-20 10:00:00+05:30
+P001,Asha Fixture,asha.fixture@example.com,+91 9000000001,1990-05-12,BLUE,2025-06-20 10:00:00+05:30
+P002,Bala Fixture,bala.fixture@example.com,+91 9000000002,1985-01-30,SILVER,2025-06-20 10:00:00+05:30
+P002,Bala Fixture,bala.fixture@example.com,+91 9000000002,1985-01-30,NONE,2025-06-01 10:00:00+05:30
+P003,Chitra Fixture,chitra.fixture@example.com,+91 9000000003,2001-11-02,NONE,2025-06-20T04:30:00Z
+P004,Dev Fixture,dev.fixture@example.com,+91 9000000004,1970-07-07,GOLD,20/06/2025 10:00
+P005,Esha Fixture,esha.fixture@example.com,+91 9000000005,1995-03-15,NONE,2025-06-20 10:00:00+05:30
+P006,Farhan Fixture,farhan.fixture@example.com,+91 9000000006,1960-12-25,NONE,2025-06-20 10:00:00+05:30
+P007,Gita Fixture,gita.fixture@example.com,+91 9000000007,1999-09-09,NONE,2025-06-20 10:00:00+05:30
+P008,Hari Fixture,hari.fixture@example.com,+91 9000000008,1980-04-04,NONE,2025-06-20 10:00:00+05:30
+P009,Indu Fixture,indu.fixture@example.com,+91 9000000009,1975-08-18,NONE,2025-06-20 10:00:00+05:30
+P010,Jai Fixture,jai.fixture@example.com,+91 9000000010,1988-02-02,NONE,2025-06-20 10:00:00+05:30
+,Ghost Fixture,ghost.fixture@example.com,+91 9000000099,1990-01-01,NONE,2025-06-20 10:00:00+05:30
+P012,Kiran Fixture,,+91 9000000012,1992-06-06,,2025-06-20 10:00:00+05:30

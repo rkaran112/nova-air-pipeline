@@ -1,0 +1,4 @@
+delay_code,description,category
+41,Aircraft defect,Technical
+71,Weather at departure airport,Weather
+93,Late arrival of aircraft from previous leg,Reactionary

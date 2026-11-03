@@ -1,0 +1,2 @@
+passenger_id,full_name,email,phone,date_of_birth,loyalty_tier,updated_at
+P013,Lata Fixture,lata.fixture@example.com,+91 9000000013,1999-12-31,NONE,2025-07-03 09:00:00+05:30

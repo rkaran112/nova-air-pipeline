@@ -1,0 +1,55 @@
+# Nova Air pipeline configuration: the sources, their keys, and the values the
+# rules use. The rule logic itself is SQL in sql/silver/, so this file only holds
+# values you might want to change without touching code.
+
+# Daily sources, processed each day in the order listed: bookings come last
+# because they must find their flight and passenger first.
+[sources.flights]
+folder = "flights"
+format = "json"
+business_key = ["flight_no", "flight_date"]
+# The file must contain these columns, or the run stops: without them no row
+# could pass the rules, so loading the file would only fill the quarantine.
+required_columns = ["flight_no", "flight_date", "origin", "destination", "sched_dep",
+                    "sched_arr", "status", "updated_at"]
+
+[sources.passengers]
+folder = "passengers"
+format = "csv"
+business_key = ["passenger_id"]
+required_columns = ["passenger_id", "updated_at"]
+
+[sources.bookings]
+folder = "bookings"
+format = "csv"
+business_key = ["booking_id"]
+required_columns = ["booking_id", "passenger_id", "flight_no", "flight_date", "cabin",
+                    "fare_amount", "currency", "status", "updated_at"]
+
+# Static reference files, reloaded whenever their content changes.
+[reference]
+folder = "reference"
+files = ["airports", "aircraft", "delay_codes", "fx_rates"]
+
+[rules]
+flight_no_pattern = "NV[0-9]{3,4}"
+valid_flight_statuses = ["OPERATED", "CANCELLED"]
+valid_booking_statuses = ["CONFIRMED", "NO_SHOW", "CANCELLED"]
+valid_cabins = ["ECONOMY", "PLUS"]
+valid_currencies = ["INR", "USD"]
+# A scheduled flight shorter than this, or longer, is a data error.
+min_block_minutes = 20
+max_block_minutes = 360
+# An actual flight time more than this multiple of the schedule is a data error.
+max_actual_block_ratio = 2.0
+# How many days after its flight date a booking may wait for the flight record.
+late_flight_grace_days = 3
+on_time_threshold_minutes = 15
+# A fare is an outlier if it is more than this many IQRs beyond the middle half
+# of fares for the same route and cabin.
+fare_outlier_iqr_multiplier = 3.0
+
+[thresholds]
+# Share of a batch sent to quarantine (not counting bookings waiting for a flight).
+quarantine_warn_rate = 0.05
+quarantine_block_rate = 0.20

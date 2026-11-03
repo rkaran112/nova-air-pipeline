@@ -1,0 +1,17 @@
+[
+  {"flight_no": "NV1009", "flight_date": "2025-07-01", "origin": "BLR", "destination": "BOM",
+   "sched_dep": "2025-07-01 18:00:00+05:30", "sched_arr": "2025-07-01 19:40:00+05:30",
+   "actual_dep": "2025-07-01 18:00:00+05:30", "actual_arr": "2025-07-01 19:40:00+05:30",
+   "aircraft_reg": "VT-TAB", "status": "OPERATED", "delay_code": null,
+   "updated_at": "2025-07-02 01:00:00+05:30"},
+  {"flight_no": "NV1001", "flight_date": "2025-07-01", "origin": "BLR", "destination": "BOM",
+   "sched_dep": "2025-07-01 06:00:00+05:30", "sched_arr": "2025-07-01 07:40:00+05:30",
+   "actual_dep": "2025-07-01 06:05:00+05:30", "actual_arr": "2025-07-01 08:05:00+05:30",
+   "aircraft_reg": "VT-TAA", "status": "OPERATED", "delay_code": "93",
+   "updated_at": "2025-07-02 10:00:00+05:30"},
+  {"flight_no": "NV1001", "flight_date": "2025-07-02", "origin": "BLR", "destination": "BOM",
+   "sched_dep": "2025-07-02 06:00:00+05:30", "sched_arr": "2025-07-02 07:40:00+05:30",
+   "actual_dep": "2025-07-02 06:00:00+05:30", "actual_arr": "2025-07-02 07:40:00+05:30",
+   "aircraft_reg": "VT-TAA", "status": "OPERATED", "delay_code": null,
+   "updated_at": "2025-07-02 23:00:00+05:30"}
+]

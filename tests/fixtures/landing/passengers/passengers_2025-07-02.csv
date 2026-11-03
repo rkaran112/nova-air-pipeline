@@ -1,0 +1,2 @@
+passenger_id,full_name,email,phone,date_of_birth,loyalty_tier,updated_at
+P002,Bala Fixture,bala.fixture@example.com,+91 9000000002,1985-01-30,GOLD,2025-07-02 09:00:00+05:30
