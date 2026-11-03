@@ -37,6 +37,10 @@ pytest, GitHub Actions. No Airflow, dbt, Spark or cloud: see
 [`DECISIONS.md`](DECISIONS.md) for why, and [`docs/SCALING.md`](docs/SCALING.md) for
 when they would be worth it.
 
+Optional: the daily bookings and passenger files can instead be extracted from a MySQL
+database and a MongoDB collection (`pipeline/extract.py`); everything after the landing
+folder is unchanged. See [`docs/SOURCES.md`](docs/SOURCES.md).
+
 ## Dashboard
 
 | Executive overview | Route performance |
@@ -179,7 +183,7 @@ Start with [`docs/00_START_HERE.md`](docs/00_START_HERE.md). Also:
 [data dictionary](docs/DATA_DICTIONARY.md), [SQL patterns](docs/SQL_PATTERNS.md),
 [interview Q&A](docs/INTERVIEW_QA.md), [hackathon playbook](docs/HACKATHON_PLAYBOOK.md),
 [practice drills](docs/PRACTICE_DRILLS.md), [change drills](docs/CHANGE_DRILLS.md),
-[scaling](docs/SCALING.md), [Power BI guide](docs/POWER_BI_GUIDE.md),
+[governance](docs/GOVERNANCE.md), [MySQL and MongoDB sources](docs/SOURCES.md), [scaling](docs/SCALING.md), [Power BI guide](docs/POWER_BI_GUIDE.md),
 [benchmarks](docs/BENCHMARKS.md), [decisions](DECISIONS.md).
 
 ## Limitations

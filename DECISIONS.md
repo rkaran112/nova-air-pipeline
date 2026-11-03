@@ -356,6 +356,43 @@ Entries are numbered in the order they were made. The phase is in brackets.
   questions are in docs/PHASE_LOG.md, so the history can still be committed phase by
   phase if wanted.
 
+## D-029 Label every column, and warn about unlabelled ones (governance)
+
+- **Context:** Personal data was protected, but the list of which columns count as
+  personal lived only in a test, so a new column could arrive with nobody deciding
+  its sensitivity.
+- **Choice:**
+  - `config/pipeline.toml` holds a label (`public`, `internal` or `pii`) for every
+    column of the three daily sources.
+  - Bronze logs a warning for any arriving column without a label.
+  - The PII leak tests read the `pii` labels, so one list drives both.
+- **Why a warning, not a stop:** silver reads named columns, so an unlabelled column
+  cannot reach silver or gold. Stopping the run would block good data over a paperwork gap.
+- **Not done:** purging raw PII from bronze after a retention period. It would break
+  `--full-refresh`, which rebuilds silver tokens from bronze. See `docs/GOVERNANCE.md`.
+- **If asked:** "Every column has a label, the tests search for every `pii` value, and a
+  new unlabelled column shows up as a warning in Data Health."
+
+## D-030 MySQL and MongoDB as optional sources, behind the landing folder
+
+- **Context:** A real airline's bookings sit in a reservation database and its passenger
+  profiles in a customer app, not in files. The pipeline only knew files.
+- **Choice:**
+  - `pipeline/extract.py` reads one day of bookings from MySQL and passengers from
+    MongoDB, and writes the same daily landing files the generator writes.
+  - `scripts/seed_sources.py` fills both systems from the generator's files, because
+    the data is synthetic and there is no live system to read.
+  - PyMySQL and pymongo are in `requirements-sources.txt`, not in the default install.
+- **Why behind the landing folder:** bronze, silver and gold, every rule and every
+  number stay untouched, and the file-based run (and CI) keeps working with no
+  database installed.
+- **Why MongoDB for passengers:** a profile is a nested document (`contact.email`).
+  Flattening it back is a real, small piece of integration work.
+- **Limitation:** whole-day extraction, not a watermark over changed rows. See
+  `docs/SOURCES.md`.
+- **If asked:** "The pipeline starts at the landing folder. MySQL and MongoDB feed it
+  through one small extract step, and a test proves the files come out identical."
+
 ---
 
 ## Ideas not implemented

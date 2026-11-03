@@ -21,15 +21,17 @@ Honest, measured, and clear that the data is synthetic. Every number comes from
 - Made loads idempotent and incremental (content-hash file log, MERGE upserts with
   newer-wins versioning, deterministic md5 surrogate keys); a test proves reruns, daily
   vs backfill runs and full refreshes produce byte-identical warehouses.
-- Protected personal data with keyed HMAC-SHA256 tokenisation in the first silver step
-  (pipeline refuses to run without the key); 71 pytest tests check every defect,
-  hand-calculated KPIs (sum-over-sum load factor), orphan keys and the absence of raw PII.
+- Applied data governance: a sensitivity label (public / internal / pii) on every source
+  column, keyed HMAC-SHA256 tokenisation of the pii columns in the first silver step
+  (pipeline refuses to run without the key), and a warning when an unlabelled column
+  arrives; 77 pytest tests check every defect, hand-calculated KPIs (sum-over-sum load
+  factor), orphan keys and the absence of raw PII in silver, gold and the exports.
 - Profiled before optimising (CSV dialect sniffing and disk commits, not SQL, were the
   bottleneck) and scaled to a 3.3M-booking-row profile: 184 days in about 28 minutes
   on a 4-core laptop with a hard disk, peaking under 1 GB of memory.
 
 Numbers as of the 2-3 November 2026 runs: 913,885 source rows and 552 batches from the
-README results, 71 tests from `pytest -q`, the medium timing (1,670 s, 965 MB) from
+README results, 77 tests from `pytest -q`, the medium timing (1,670 s, 965 MB) from
 `docs/BENCHMARKS.md`. Re-check after any rerun.
 
 ## One-line version
