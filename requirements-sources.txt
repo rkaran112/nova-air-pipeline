@@ -1,0 +1,5 @@
+# Optional: only needed to read from the MySQL and MongoDB source systems (pipeline/extract.py).
+# The default file-based pipeline does not need these.
+# Rule: newest release that was at least two weeks old on 2026-11-02 (see DECISIONS.md, D-003).
+PyMySQL==1.2.3
+pymongo==4.19.0

@@ -13,3 +13,6 @@ data/
 *.duckdb
 *.duckdb.wal
 .gstack/
+
+# Local scripts that contain passwords
+*.local.sql
